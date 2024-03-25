@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+if [ "$(uname)" == "Darwin" ]; then
+    exec >/dev/tty 2>&1
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    exec >/dev/tty 2>&1
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+    exec >/dev/console 2>&1
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW64_NT" ]; then
+   exec >/dev/console 2>&1
+fi
+
+echo 'Performing pre-commit linting ...'
+
+npx lint-staged
