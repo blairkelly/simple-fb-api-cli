@@ -34,7 +34,7 @@ program.option(
 
 program.option(
     "--poll-interval <value>",
-    "An duration (in ms) to wait between requests for data.",
+    "A duration (in ms) to wait between requests for data.",
     "2000"
 );
 
